@@ -1,0 +1,238 @@
+/*
+ * Ballast Strength Studio — design tokens (Tempo).
+ * The ONLY file with raw colours, fonts, sizes and spacing (see DESIGN.md).
+ * Every other stylesheet uses these custom properties.
+ *
+ * The idea: controlled strength. A bright, private training room — plaster
+ * walls, a concrete floor, black steel and plywood — and one signal colour
+ * (burnt orange by default, owner-editable) for everything that moves: the
+ * buttons, the words that lean forward in a headline, the booking band, and
+ * the lowering count of the tempo line, the studio's one ornament. Type is one
+ * family, Schibsted Grotesk, heavy and upright for headlines with true italics
+ * for the lean; figures are tabular, set large where they matter (minutes,
+ * prices). The only dark is the steel of the rack — the booking sheet's
+ * header and the footer.
+ *
+ * Token names are shared with the other Niche Pack starters (so booking.css
+ * reads the same everywhere); the comments say what each one is here.
+ */
+:root {
+  /* ── Colour ─────────────────────────────────────────────── */
+  --paper: #f2f1ee;          /* plaster — the page */
+  --raised: #fbfbfa;         /* chalk white — inputs, the booking sheet, cards */
+  --oat: #e5e3de;            /* concrete — the studio band, Good to know, the booking summary */
+  --oat-deep: #d5d2cb;       /* frames while loading, skeletons */
+  --sage-100: #ecebe7;       /* quiet highlights */
+  --sage-200: #dedcd6;       /* tags, done steps */
+  --rule: #cfccc5;           /* hairlines (decorative) */
+  --line-input: #74777c;     /* input and icon-button borders (≥ 3:1 on plaster, chalk, concrete) */
+  --line-soft: #a9aaab;      /* borders of choice buttons named by their own text */
+  --mark: #2f7a4a;           /* the "open" dot (≥ 3:1) */
+  --ink: #121417;            /* steel-black — 17:1 on the page */
+  --ink-soft: #2c3035;       /* 12.5:1 */
+  --muted: #565b62;          /* 6.2:1 on the page, 5.5:1 on concrete */
+  --clay: #a3261a;           /* errors only (with an icon or words, never colour alone) */
+  --ply: #d8c3a0;            /* plywood — the plate in the name mark's shadow, tempo rest counts on steel */
+  --scrim: rgb(18 20 23 / 0.08);
+  --veil: rgb(14 16 19 / 0.6); /* the page behind the booking sheet */
+  --clay-wash: color-mix(in oklab, var(--clay) 6%, var(--raised));
+  --mark-halo: color-mix(in oklab, var(--mark) 22%, transparent);
+
+  /* Steel: the rack — the booking sheet's header and the footer (never owner-editable). */
+  --forest: #16191d;         /* steel */
+  --forest-2: #1f2328;       /* a raised steel panel */
+  --forest-3: #2a2f35;       /* a lifted panel, hover */
+  --on-forest: #f2f1ee;      /* 16:1 on steel */
+  --on-forest-soft: #c9cbcd; /* 11:1 */
+  --on-forest-faint: #9a9ea3; /* 6.6:1 — small print on steel only */
+  --forest-line: #30353b;    /* decorative rules on steel */
+  --forest-line-strong: #4a5057;
+  --light: #ffffff;
+
+  /* Owner-editable (brand.accent) — set on <html> at run time. */
+  --accent: #c2410c;
+  --accent-strong: color-mix(in oklab, var(--accent) 84%, #000);
+  --accent-deep: color-mix(in oklab, var(--accent) 55%, #000);
+  --accent-tint: color-mix(in oklab, var(--accent) 12%, var(--raised));
+  --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--raised));
+  --on-accent: #ffffff;      /* white on burnt orange, 5.2:1 (the editor checks any new colour at 4.5:1) */
+  /* The signal on steel: lifted so it reads on the dark (the tempo line, numerals, focus). */
+  --accent-glow: color-mix(in oklab, var(--accent) 55%, #ffe2d2);
+  --on-accent-soft: color-mix(in oklab, var(--on-accent) 86%, var(--accent));
+
+  /* ── Type ───────────────────────────────────────────────── */
+  --font-display: 'Schibsted Grotesk Variable', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  --font-text: 'Schibsted Grotesk Variable', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  /* No monospace here: small labels and figures use the same family with tabular figures. */
+  --font-mono: var(--font-text);
+
+  --text-micro: 0.75rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.06rem + 0.3vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.7vw, 1.875rem);
+  --text-2xl: clamp(2.25rem, 1.55rem + 2.8vw, 4rem);
+  --text-3xl: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  --text-hero: clamp(2.75rem, 1.3rem + 5vw, 6.25rem);
+  --text-hero-pillar: clamp(3rem, 4.3vw, 5.75rem); /* the headline beside the pillar */
+  --text-statement: clamp(1.5rem, 1.15rem + 1.4vw, 2.375rem);
+  --text-figure: clamp(3rem, 2.3rem + 2.6vw, 5rem);   /* a session's minutes */
+  --text-numeral: clamp(2.25rem, 1.8rem + 1.8vw, 3.25rem);
+  --text-code: clamp(1.875rem, 1.6rem + 1.2vw, 2.375rem);
+  --text-step: clamp(1.5rem, 1.32rem + 0.6vw, 1.875rem);  /* a booking step's heading */
+  --text-sheet: clamp(1.1875rem, 1.1rem + 0.3vw, 1.375rem); /* the booking sheet's title */
+  --text-service: clamp(1.25rem, 1.1rem + 0.55vw, 1.625rem);
+  --text-price: clamp(1.25rem, 1.12rem + 0.45vw, 1.5rem);
+  --text-fact: clamp(1.0625rem, 0.98rem + 0.3vw, 1.25rem);
+  --text-wordmark: clamp(1.375rem, 1.27rem + 0.4vw, 1.625rem);
+  --text-footer-name: clamp(4rem, 1.4rem + 10vw, 11rem);
+
+  --leading-display: 0.92;
+  --leading-heading: 1;
+  --leading-body: 1.6;
+  --leading-tight: 1.28;
+
+  --tracking-display: -0.04em;
+  --tracking-eyebrow: 0.12em;
+  --tracking-button: 0.005em;
+  --tracking-code: 0.42em;
+  --tracking-tag: 0.08em;
+  --tracking-wordmark: -0.045em;
+  --tracking-mono: 0.02em;
+
+  --weight-text: 400;
+  --weight-strong: 600;
+  --weight-display: 800;
+
+  /* Schibsted has no width axis; kept for the shared booking styles. */
+  --stretch-display: 100%;
+  --stretch-label: 100%;
+  --stretch-text: 100%;
+
+  /* Heading style (brand.headings): bold (default) | medium | upright */
+  --heading-font: var(--font-display);
+  --heading-weight: var(--weight-display);
+  --heading-stretch: var(--stretch-display);
+  --heading-tracking: var(--tracking-display);
+  --heading-light-weight: var(--weight-display);
+  --lean-style: italic;
+
+  --measure: 62ch;
+  --measure-lede: 42ch;
+  --measure-title: 12ch;
+
+  /* ── Space ──────────────────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8.5rem;
+
+  --gutter: clamp(1rem, 4.5vw, 4.5rem);
+  --section-pad: clamp(4.5rem, 2.4rem + 6.4vw, 8.5rem);
+  --desk-pad: clamp(var(--space-5), 4vw, var(--space-8));
+  --page-max: 86rem;
+  --header-height: 4rem;
+  --sheet-width: 60rem;      /* the booking sheet from 960 px */
+
+  /* ── Sizes ──────────────────────────────────────────────── */
+  --tap: 2.75rem;            /* 44 px — the smallest tap target */
+  --control: 3.25rem;        /* 52 px — buttons */
+  --input: 3rem;             /* 48 px — inputs in the booking sheet */
+  --chip: 2.75rem;           /* 44 px — time chips (the smallest tap target) */
+  --day-cell: 2.75rem;       /* 44 px — month grid cells */
+  --day-card-w: 4rem;        /* 64 px — phone day rail */
+  --day-card-h: 5.25rem;     /* 84 px */
+  --dot: 0.3125rem;          /* 5 px — the "open" mark */
+  --drop: 0.75rem;           /* 12 px */
+  --plate-w: 0.34em;         /* the name mark's plate, seen edge-on */
+  --plate-h: 0.62em;
+  --tempo-h: 4px;            /* the tempo line */
+  --tempo-gap: 3px;
+  --bar-w: 1.5rem;           /* the load bar before a section label */
+  --hairline: 1px;
+  --rule-strong: 2px;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --logo-height: 1.75rem;
+  --logo-max: 11rem;
+  --summary-width: 17rem;
+  --time-min: 6rem;          /* a time chip's narrowest width */
+  --label-col: 7rem;
+  --form-max: 34rem;
+  --code-width: 15rem;
+  --code-height: 4rem;
+  --sticky-offset: 6rem;     /* room above a step heading for the phone summary strip */
+  --session-aside: 21rem;    /* the session groups' left column */
+  --session-figure: 7.5rem;  /* the minutes column */
+  --pillar: clamp(17rem, 29vw, 27rem);          /* the first screen's photo pillar */
+  --pillar-section: clamp(15rem, 23vw, 21rem);  /* a section's photo pillar */
+  --pillar-gap: clamp(1.5rem, 3.4vw, 3.5rem);   /* between a pillar and what stands beside it */
+  --service-thumb: 4.5rem;   /* an owner's session photo in the list */
+  --status-dot: 0.5rem;
+  --skeleton-block: 20rem;
+  --skeleton-times: 9rem;
+
+  /* ── Shape ──────────────────────────────────────────────── */
+  /* Steel and plywood: square corners; controls barely soften. */
+  --radius-0: 0;
+  --radius-1: 2px;
+  --radius-2: 4px;           /* the booking sheet, cards */
+  --radius-nail: 50%;        /* round marks (kept name: shared booking styles) */
+  --radius-pill: 999px;
+  --shadow-soft: 0 -0.5rem 1.5rem var(--scrim);
+  --shadow-top: 0 0.5rem 1.5rem var(--scrim);
+  --shadow-print: 0 1.5rem 3rem -1.5rem rgb(18 20 23 / 0.35);
+  --shadow-sheet: -1.5rem 0 4rem rgb(14 16 19 / 0.28);
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --dur-quick: 160ms;
+  --dur-step: 280ms;
+  --dur-enter: 620ms;
+  --dur-photo: 900ms;
+  --dur-draw: 1100ms;        /* the tempo line filling */
+  --dur-sheet: 420ms;
+  --stagger: 70ms;
+  --dur-shimmer: 1600ms;
+  --dur-spin: 900ms;
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-hand: cubic-bezier(0.7, 0, 0.2, 1); /* slow down, quick up: a controlled rep */
+  --rise: 0.875rem;
+  --settle-scale: 1.035;
+
+  /* ── Layers ─────────────────────────────────────────────── */
+  --layer-sticky: 5;
+  --layer-banner: 10;
+  --layer-header: 8;
+}
+
+:root[data-headings='medium'] {
+  --heading-weight: 600;
+  --heading-light-weight: 600;
+  --heading-tracking: -0.03em;
+}
+
+:root[data-headings='upright'] {
+  --lean-style: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-quick: 1ms;
+    --dur-step: 1ms;
+    --dur-enter: 1ms;
+    --dur-photo: 1ms;
+    --dur-draw: 1ms;
+    --dur-sheet: 1ms;
+    --stagger: 0ms;
+    --rise: 0px;
+    --settle-scale: 1;
+  }
+}

@@ -1,0 +1,9 @@
+/*
+ * The packaged dashboard keeps its own design. The site brands it with one
+ * thing — its accent, per appearance (INTEGRATION.md §10). Tempo's signal:
+ * burnt orange with white text in Light; in Dark, the lifted signal of the
+ * site's steel surfaces with steel text. Owner monogram, primary buttons,
+ * Confirm, focus rings, selection and the schedule's "now" line all follow it.
+ */
+:root .pbe-admin[data-mode='light'] { --pbe-accent: #c2410c; --pbe-accent-text: #ffffff; } /* ≈5.2:1 on white; white text ≈5.2:1 */
+:root .pbe-admin[data-mode='dark']  { --pbe-accent: #f6a57c; --pbe-accent-text: #16191d; } /* ≈9.6:1 on a near-black dashboard; steel text ≈9.5:1 */
