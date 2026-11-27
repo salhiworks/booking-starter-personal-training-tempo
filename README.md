@@ -29,7 +29,7 @@ stand on it as pillars with content balanced either side, and the sessions run a
 progression board.
 
 Booking runs on [`@profitstudio/booking-engine`](https://www.npmjs.com/package/@profitstudio/booking-engine)
-**2.0.0** (pinned) with your own Supabase project and Resend for email.
+**2.0.1** (pinned) with your own Supabase project and Resend for email.
 
 ## 1. Try it (no accounts needed)
 
